@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
-declare var $;
+declare let $;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   showTemplateForm = false;
 
   html: string;
 
   form: UntypedFormGroup;
-  config: any = {
+  config: { [key: string]: unknown } = {
     airMode: false,
     tabDisable: true,
     popover: {
       table: [
         ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
       ],
       image: [
         ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
         ['float', ['floatLeft', 'floatRight', 'floatNone']],
-        ['remove', ['removeMedia']],
+        ['remove', ['removeMedia']]
       ],
       link: [['link', ['linkDialogShow', 'unlink']]],
       air: [
@@ -39,10 +39,10 @@ export class AppComponent implements OnInit {
             'strikethrough',
             'superscript',
             'subscript',
-            'clear',
-          ],
-        ],
-      ],
+            'clear'
+          ]
+        ]
+      ]
     },
     height: '200px',
     uploadImagePath: '/api/upload',
@@ -57,20 +57,20 @@ export class AppComponent implements OnInit {
           'strikethrough',
           'superscript',
           'subscript',
-          'clear',
-        ],
+          'clear'
+        ]
       ],
       ['fontsize', ['fontname', 'fontsize', 'color']],
       ['para', ['style0', 'ul', 'ol', 'paragraph', 'height']],
       ['insert', ['table', 'picture', 'link', 'video', 'hr']],
-      ['customButtons', ['testBtn']],
+      ['customButtons', ['testBtn']]
     ],
     buttons: {
-      testBtn: customButton,
+      testBtn: customButton
     },
     codeviewFilter: true,
     codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml|.*onmouseover)[^>]*?>/gi,
-    codeviewIframeFilter: true,
+    codeviewIframeFilter: true
   };
 
   editorDisabled = false;
@@ -81,11 +81,9 @@ export class AppComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer) {
     this.form = new UntypedFormGroup({
-      html: new UntypedFormControl('', Validators.required),
+      html: new UntypedFormControl('', Validators.required)
     });
   }
-
-  ngOnInit() {}
 
   enableEditor() {
     this.editorDisabled = false;
@@ -115,9 +113,9 @@ function customButton(context) {
     tooltip: 'Custom button',
     container: '.note-editor',
     className: 'note-btn',
-    click: function () {
+    click: function() {
       context.invoke('editor.insertText', 'Hello from test btn!!!');
-    },
+    }
   });
   return button.render();
 }

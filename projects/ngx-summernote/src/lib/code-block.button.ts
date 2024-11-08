@@ -1,4 +1,4 @@
-declare var $;
+declare let $;
 
 const codeBlockButtonStyle = `font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
 font-size: 12px;

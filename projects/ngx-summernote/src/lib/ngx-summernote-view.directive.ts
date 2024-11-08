@@ -2,7 +2,7 @@ import {
     Directive, Input, ElementRef, Renderer2, AfterViewInit
 } from '@angular/core';
 
-declare var $;
+declare let $;
 
 @Directive({
     // tslint:disable-next-line:directive-selector

@@ -18,7 +18,7 @@ import { map } from 'rxjs/operators';
 import { SummernoteOptions } from './summernote-options';
 import { codeBlockButton } from './code-block.button';
 
-declare var $;
+declare let $;
 
 @Directive({
   // tslint:disable-next-line:directive-selector
